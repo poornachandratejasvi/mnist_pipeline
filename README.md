@@ -1,11 +1,90 @@
 # mnist_pipeline
 mlops pipeline for mnist data
 
+Architecture flow
+-----------
 Pipeline overview: 
 ![alt text](https://raw.githubusercontent.com/poornachandratejasvi/mnist_pipeline/main/picture/mnist-overall.png "pipeline overviw")
 
 Pipeline execution flow: 
 ![alt text](https://raw.githubusercontent.com/poornachandratejasvi/mnist_pipeline/main/picture/mnist-detailed.png "execution flow")
+
+
+Details
+-----------
+### model building pipeline
+
+There are 4 steps in the model building or training phase
+
+#### Get Data
+In this stage we will download the mnist data from [mnist.npz](https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz) and save the mnist.npz file
+
+#### ETL
+
+in this stage we will extract the data from mnist.npz file with split of data for training and testing , starting 59000 dataset is used for training, the range of pixel value is 0 to 255. Normalization of dataset is applied for making the pixel value to range between 0 to 1
+
+#### model training
+
+here were have created 2 model architecture, one with CNN and one without CNN, we traing both the model using the training data created in ETL stage, and save the model which is created in RD model store
+
+we can increase the epos, batch_size and learning rate by seting the below parameter
+
+env variable: **epochs** takes int value, batch_size takes int value, learning_rate takes float value
+
+##### non CNN model achitecture
+
+```
+Model: "mnist_without_CNN"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+flatten (Flatten)            (None, 784)               0         
+_________________________________________________________________
+dense (Dense)                (None, 128)               100480    
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               16512     
+_________________________________________________________________
+dense_2 (Dense)              (None, 10)                1290      
+=================================================================
+Total params: 118,282
+Trainable params: 118,282
+Non-trainable params: 0
+```
+
+##### CNN model achitecture
+
+```
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 26, 26, 32)        320       
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 13, 13, 32)        0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 11, 11, 64)        18496     
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 5, 5, 64)          0         
+_________________________________________________________________
+flatten (Flatten)            (None, 1600)              0         
+_________________________________________________________________
+dropout (Dropout)            (None, 1600)              0         
+_________________________________________________________________
+dense (Dense)                (None, 10)                16010     
+=================================================================
+Total params: 34,826
+Trainable params: 34,826
+Non-trainable params: 0
+
+```
+#### model evaluation
+
+this stage we evaluated all the model present in RDmodelstore using testdata obtained in Etl state, F1 score is obtained for all models and compared and evaluated. Model with great f1 score will be selected and uploaded to production modelstore
+
+minimum f1 score for model evaluation is setting **min_f1_score** env which takes floting values
+
+
+
 
 
 execution steps for training and inferance of model
