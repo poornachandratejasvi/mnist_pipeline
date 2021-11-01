@@ -13,6 +13,7 @@ Pipeline execution flow:
 Details
 -----------
 ### model building pipeline
+-----------
 
 There are 4 steps in the model building or training phase
 
@@ -83,6 +84,32 @@ this stage we evaluated all the model present in RDmodelstore using testdata obt
 
 minimum f1 score for model evaluation is setting **min_f1_score** env which takes floting values
 
+
+### model inferancing pipeline
+-----------
+
+There are 4 steps in the model building or training phase
+
+
+
+#### production image sensor picture
+In this stage we are simulating the data from image sensor and store the image in png
+
+#### ETL
+
+In this stage we will get image(png) from previous step of image sensor, the range of pixel value is 0 to 255. Normalization of dataset is applied for making the pixel value to range between 0 to 1 and ndarry is stored for prediction
+
+#### COS
+
+COS(cooridation service) is used to send the data for prediction and obtain the result from inferancing model
+
+### inferancing 
+
+this stage will take model from prod_model_store and expose api for prediction, takes ndarray of image as input and respond with prediction 
+
+### raw data collection
+
+this stage we store the real time image (ndarray) for furture Continues training. The result will be without label. **manual operation** Domain expert need to label the image and package it and upload to RD data source
 
 
 
