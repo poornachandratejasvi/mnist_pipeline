@@ -154,8 +154,9 @@ follow step 2 and 3 in **execution steps for training and inferance of model** a
 
 
 
-Docker build
+Docker (prefered) 
 -----------
+Note: its prefered to use docker as all the prerequired library will be install as part of docker build.
 
 for building the docker , clone the repo and run the below cmd
 
