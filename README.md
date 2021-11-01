@@ -153,6 +153,28 @@ the process of training and inferancing of Model continues repeatatively
 follow step 2 and 3 in **execution steps for training and inferance of model** and **then Continues training**
 
 
+
+Docker build
+-----------
+
+for building the docker , clone the repo and run the below cmd
+
+#### docker build
+
+```docker build --tag mnistpiple:v1 .```
+
+#### docker run
+
+```docker run -it mnistpiple:v1 bash```
+
+#### execution
+
+```cd /bd_build/```
+
+follow the steps mentioned at **execution steps for training and inferance of model**
+
+
+
 **Note**: testing was done on linus discribution of fedora and centos  
   
 
