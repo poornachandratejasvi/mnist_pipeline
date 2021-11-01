@@ -1,0 +1,7 @@
+pandas
+numpy
+requests==2.23.0
+flask
+tensorflow==2.5.1
+Pillow
+scikit-learn
