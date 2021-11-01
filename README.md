@@ -1,6 +1,9 @@
 # mnist_pipeline
 mlops pipeline for mnist data
 
+Pipeline overview: 
+![alt text](https://raw.githubusercontent.com/poornachandratejasvi/mnist_pipeline/main/picture/mnist-overall.png "pipeline overviw")
+
 
 execution steps for training and inferance of model
 -----------
