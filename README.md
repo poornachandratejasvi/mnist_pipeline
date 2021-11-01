@@ -153,5 +153,6 @@ the process of training and inferancing of Model continues repeatatively
 follow step 2 and 3 in **execution steps for training and inferance of model** and **then Continues training**
 
 
+**Note**: testing was done on linus discribution of fedora and centos  
   
 
