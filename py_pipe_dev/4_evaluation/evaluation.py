@@ -95,7 +95,7 @@ response = requests.request("POST", url, headers=headers, data = payload, files 
 # In[8]:
 
 
-response.text
+print(response.text)
 
 
 # In[ ]:

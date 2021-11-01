@@ -48,13 +48,13 @@ response = requests.request("POST", url, headers=headers, data = payload, verify
 # In[7]:
 
 
-response
+print(response)
 
 
 # In[8]:
 
 
-response.text
+print(response.text)
 
 
 # In[ ]:

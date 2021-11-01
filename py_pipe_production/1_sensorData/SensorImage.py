@@ -54,11 +54,6 @@ print(number)
 # In[11]:
 
 
-import matplotlib.pyplot as plt
-plt.imshow(x_test[number],cmap=plt.cm.binary)
-plt.show()
-
-
 # In[12]:
 
 
